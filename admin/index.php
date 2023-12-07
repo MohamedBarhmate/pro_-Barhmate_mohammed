@@ -33,7 +33,7 @@ require("../config/commandes.php");
         
       </ul>
       <div style="margin-right: 500px">
-        <h5 style="color: #545659; opacity: 0.5;">Connecté en tant que: <?= $nom ?></h5>
+        <h5 style="color: #545659; opacity: 0.5;">Connecté en tant que: <?= $nom ?></h5> 
       </div>
       
       <a class="btn btn-danger d-flex" style="display: flex; justify-content: flex-end;" href="destroy.php">Se deconnecter</a>
@@ -85,7 +85,7 @@ require("../config/commandes.php");
 
   if(isset($_POST['valider']))
   {
-    if(isset($_POST['name']) AND isset($_POST['quantity']) AND isset($_POST['prix']) AND isset($_POST['img_url']AND isset($_POST['description']))
+    if(isset($_POST['name']) AND isset($_POST['quantity']) AND isset($_POST['prix']) AND isset($_POST['img_url']) AND isset($_POST['description']))
     {
     if(!empty($_POST['name']) AND !empty($_POST['quantity']) AND !empty($_POST['prix']) AND !empty($_POST['img_url']) AND !empty($_POST['description']))
 	    {
