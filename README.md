@@ -1,6 +1,6 @@
-# pro_-Barhmate_mohammed
 
-# projet Final COMMERCE ÉLECTRONIQUE 1 : projet1_BARHMATE_MOHAMMED
+
+# projet COMMERCE ÉLECTRONIQUE 1 : projet1_BARHMATE_MOHAMMED :
 
 # Description :
 L'objectif de ce projet est de créer une plateforme de commerce électronique en utilisant PHP
