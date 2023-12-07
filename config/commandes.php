@@ -26,7 +26,7 @@ function afficherProduct()
         $req->closeCursor();
 	}
 }
-function supprimer($id)
+function supprimerProduct($id)
 {
 	if(require("connexion.php"))
 	{
