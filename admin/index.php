@@ -1,6 +1,17 @@
 <?php 
+session_start();
+
 require("../config/commandes.php");
 
+if(!isset($_SESSION['xRttpHo0greL39']))
+{
+    header("Location: ../login.php");
+}
+
+if(empty($_SESSION['xRttpHo0greL39']))
+{
+    header("Location: ../login.php");
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,10 +44,10 @@ require("../config/commandes.php");
         
       </ul>
       <div style="margin-right: 500px">
-        <h5 style="color: #545659; opacity: 0.5;">Connecté en tant que: <?= $nom ?></h5> 
+        <h5 style="color: #545659; opacity: 0.5;">Connecté en tant que: <? $nom ?></h5> 
       </div>
       
-      <a class="btn btn-danger d-flex" style="display: flex; justify-content: flex-end;" href="destroy.php">Se deconnecter</a>
+      <a class="btn btn-danger d-flex" style="display: flex; justify-content: flex-end;" href="deconnection.php">Se deconnecter</a>
     </div>
   </div>
 </nav>
@@ -50,7 +61,7 @@ require("../config/commandes.php");
 <form method="post">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Nom du produit</label>
-    <input type="name" class="form-control" name="name" required>
+    <input type="name" class="form-control" name="nom" required>
 
   </div>
   <div class="mb-3">
@@ -85,19 +96,19 @@ require("../config/commandes.php");
 
   if(isset($_POST['valider']))
   {
-    if(isset($_POST['name']) AND isset($_POST['quantity']) AND isset($_POST['prix']) AND isset($_POST['img_url']) AND isset($_POST['description']))
+    if(isset($_POST['nom']) AND isset($_POST['quantity']) AND isset($_POST['prix']) AND isset($_POST['img_url']) AND isset($_POST['description']))
     {
-    if(!empty($_POST['name']) AND !empty($_POST['quantity']) AND !empty($_POST['prix']) AND !empty($_POST['img_url']) AND !empty($_POST['description']))
+    if(!empty($_POST['nom']) AND !empty($_POST['quantity']) AND !empty($_POST['prix']) AND !empty($_POST['img_url']) AND !empty($_POST['description']))
 	    {
-	    	$name = htmlspecialchars(strip_tags($_POST['name']));
+	    	$nom = htmlspecialchars(strip_tags($_POST['nom']));
 	    	$quantity = htmlspecialchars(strip_tags($_POST['quantity']));
 	    	$prix = htmlspecialchars(strip_tags($_POST['prix']));
 	    	$img_url = htmlspecialchars(strip_tags($_POST['img_url']));
-            $description = htmlspecialchars(strip_tags($_POST['description']));
+        $description = htmlspecialchars(strip_tags($_POST['description']));
           
           try 
           {
-            ajouterProduct($name, $quantity, $price, $img_url, $description);
+            ajouterProduct($nom, $quantity, $prix, $img_url, $description);
             //header('Location: afficher.php');
           } 
           catch (Exception $e) 
