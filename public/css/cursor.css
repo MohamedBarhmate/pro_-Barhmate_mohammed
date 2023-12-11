@@ -1,0 +1,12 @@
+input,
+button,
+label,
+a {
+	cursor:pointer;
+}
+input:active,
+button:active,
+label:active,
+a:active {
+	cursor:pointer;
+}

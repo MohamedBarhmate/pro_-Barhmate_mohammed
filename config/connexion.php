@@ -1,16 +1,21 @@
 <?php
 
-try {
-		$access=new pdo("mysql:host=localhost;dbname=ecom1_project;charset=utf8", "root", "");
-		
-		$access->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-
-} catch (Exception $e) 
+function connexionDB()
 {
-	$e->getMessage();
-}
-    
-    
+    $dbhost = "localhost";
+    $dbuser = "root";
+    $dbpassword = "";
+    $dbname = "ecom1_project";
 
+    $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
+
+    if (!$conn) {
+        die("Error connection => " . mysqli_connect_error());
+    }
+
+    return $conn;
+}
+
+$conn = connexionDB();
 
 ?>

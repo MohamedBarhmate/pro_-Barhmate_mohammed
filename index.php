@@ -1,9 +1,44 @@
 <?php
 session_start();
-require("config/commandes.php");
 
-$Produits=afficherProduct();
+// Initialize the cart if it doesn't exist
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
 
+// Handling addition to the cart
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['add_to_cart'])) {
+        // Get product details and add to the cart
+        $productId = $_POST['product_id'];
+        $productName = $_POST['product_name'];
+        $productPrice = $_POST['product_price'];
+
+        // Check if the product is already in the cart
+        $productInCart = false;
+        foreach ($_SESSION['cart'] as &$cartItem) {
+            if ($cartItem['id'] === $productId) {
+                $cartItem['quantity'] += 1; // Increment the quantity
+                $productInCart = true;
+                break;
+            }
+        }
+        unset($cartItem); // Release the explicit reference
+
+        // If the product is not in the cart, add it
+        if (!$productInCart) {
+            $_SESSION['cart'][] = [
+                'id' => $productId,
+                'name' => $productName,
+                'price' => $productPrice,
+                'quantity' => 1,
+            ];
+        }
+
+        // Display an alert that the item has been added
+        echo '<script>alert("Item has been added to the cart!");</script>';
+    }
+}
 ?>
 
 <!doctype html>
@@ -14,7 +49,7 @@ $Produits=afficherProduct();
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.80.0">
-    <title>Album example · Bootstrap v5.0</title>
+    <title>soremed</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     
@@ -40,7 +75,7 @@ $Produits=afficherProduct();
     
   </head>
   <body>
-    
+  
 <header>
   <div class="collapse bg-dark" id="navbarHeader">
     <div class="container">
@@ -50,9 +85,9 @@ $Produits=afficherProduct();
           <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
-          <h4 class="text-white">Sign in</h4>
+          <h4><a href="login.php" class="text-white">Sign in</h4>
           <ul class="list-unstyled">
-            <li><a href="login.php" class="text-white">Se connecter</a></li>
+            <li><a href="registration/public/inscription.php" class="text-white">Inscription</a></li>
           </ul>
         </div>
       </div>
@@ -70,40 +105,6 @@ $Produits=afficherProduct();
     </div>
   </div>
 </header>
-
-<main>
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-      <?php foreach($Produits as $produit): ?> 
-        <div class="col">
-          <div class="card shadow-sm">
-            <h3><?= $produit->name ?></h3>
-            <img src="<?= $produit->img_url ?>" style="width: 24%">
-
-            <div class="card-body">
-              <p class="card-text"><?= substr($produit->description, 0, 130); ?>...</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a href="produit.php?pdt=<?= $produit->id ?>"><button type="button" class="btn btn-sm btn-success">Voir plus</button></a>
-                </div>
-                <small class="text" style="font-weight: bold;"><?= $produit->quantity ?> pièce</small>
-                <small class="text" style="font-weight: bold;"><?= $produit->price ?> €</small>
-              </div>
-            </div>
-          </div>
-        </div>
-  <?php endforeach; ?>
-
-
-      </div>
-    </div>
-  </div>
-
-</main>
 
   </body>
 </html>
