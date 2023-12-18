@@ -10,20 +10,20 @@ if (!isset($_SESSION['user_id'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_id = $_SESSION['user_id'];
 
-    // Obtener datos del formulario
+    //Obtenir les données du formulaire
     $user_name = $_POST['user_name'];
     $email = $_POST['email'];
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
 
-    // Validar que todos los campos estén llenos
+    // Validez que tous les champs sont remplis
     if (empty($user_name) || empty($email) || empty($fname) || empty($lname)) {
         $error_message = "All fields must be filled.";
-        header("Location: profile.php?error=$error_message");
+        header("Location: profil.php?error=$error_message");
         exit();
     }
 
-    // Actualizar la información del usuario en la base de datos
+    // Mettre à jour les informations utilisateur dans la base de données
     $sql = "UPDATE `user` 
             SET `user_name` = '$user_name', `email` = '$email', `fname` = '$fname', `lname` = '$lname' 
             WHERE `id` = $user_id";
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (mysqli_query($conn, $sql)) {
         header("Location: profil.php");
     } else {
-        $error_message = "Error updating profile: " . mysqli_error($conn);
+        $error_message = "Error updating profil: " . mysqli_error($conn);
         header("Location: profil.php?error=$error_message");
         exit();
     }

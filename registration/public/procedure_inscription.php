@@ -2,7 +2,7 @@
 require_once('../../config/connexion.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Verificar campos vacíos
+    // Vérifiez champs vides
     $required_fields = ['user_name', 'email', 'pwd', 'street_name', 'street_nb', 'city', 'province', 'zip_code', 'country'];
     $errors = [];
 
@@ -13,13 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (!empty($errors)) {
-        // Redirigir con mensajes de error
+        //Redirection avec messages d'erreur
         $error_message = implode("<br>", $errors);
         header("Location: inscription.php?error=$error_message");
         exit();
     }
 
-    // Recibir datos del formulario
+    // Recevoir les données du formulaire
     $user_name = $_POST['user_name'];
     $email = $_POST['email'];
     $pwd = $_POST['pwd'];
@@ -30,15 +30,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $zip_code = $_POST['zip_code'];
     $country = $_POST['country'];
 
-    // Hash de la contraseña
+    // Hachage du mot de passe
     $hashed_password = password_hash($pwd, PASSWORD_DEFAULT);
 
-    // Inserción del nuevo usuario en la tabla 'user'
+    // Insertion du nouvel utilisateur dans la table 'user'
     $sql_user = "INSERT INTO `user` (`user_name`, `email`, `pwd`, `role_id`) 
-                 VALUES ('$user_name', '$email', '$hashed_password', (SELECT `id` FROM `role` WHERE `name` = 'client'))";
+                 VALUES ('$user_name', '$email', '$hashed_password', 3)";
 
     if (mysqli_query($conn, $sql_user)) {
-        // Obtener el ID del usuario recién registrado
+        // Obtenez l'ID de l'utilisateur nouvellement enregistré
         $user_id = mysqli_insert_id($conn);
 
         // Inserción de la dirección en la tabla 'address'

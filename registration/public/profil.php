@@ -1,20 +1,19 @@
 <?php
-// Include the database configuration file
+// Inclure le fichier de configuration de la base de données
 require_once('../../config/connexion.php');
 
-// Assuming that user information is stored in a session after login
 session_start();
 
-// Redirect to the login page if the user is not authenticated
+// Redirection vers la page de connexion si l'utilisateur n'est pas authentifié
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
-// Get the user ID from the session
+// Récupérer l'ID utilisateur de la session
 $user_id = $_SESSION['user_id'];
 
-// Get user information from the database
+// Obtenir des informations utilisateur à partir de la base de données
 $sql = "SELECT * FROM `user` WHERE `id` = $user_id";
 $result = mysqli_query($conn, $sql);
 $user = mysqli_fetch_assoc($result);
@@ -107,7 +106,7 @@ $user = mysqli_fetch_assoc($result);
 <body>
     <h2>User Profile</h2>
     <form action="process_update_profile.php" method="post" enctype="multipart/form-data">
-        <!-- Display user information and add form fields based on your database structure -->
+        <!-- Afficher les informations utilisateur et ajouter des champs de formulaire -->
         <img src="../../public/images/avatar.jpg" alt="Default Profile Picture" width="100">
         <br>
         <label for="user_name">Username:</label>
@@ -124,7 +123,7 @@ $user = mysqli_fetch_assoc($result);
         <br>
         <input type="submit" value="Save">
         <?php
-        // Display error messages if they exist
+        // Afficher les messages d'erreur s'ils existent
         if (isset($_GET['error'])) {
             $error = $_GET['error'];
             echo "<p class='error'>$error</p>";
