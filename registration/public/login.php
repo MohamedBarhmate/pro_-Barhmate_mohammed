@@ -136,7 +136,9 @@ form .signup-link a:hover{
           <div class="row button">
             <input type="submit" value="Login">
           </div>
-          <div class="signup-link">Not a member? <a href="#">Signup now</a><a href="../../index.php">Home</a></div>
+          <div class="signup-link">Not a member? <a href="#">Signup now</a>
+          <a href="../../index.php">Home</a>
+          </div>
           <?php
     // Display error messages if they exist
     if (isset($_GET['error'])) {
