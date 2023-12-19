@@ -1,11 +1,11 @@
 <?php
-// Suponiendo que la información del usuario se almacena en una sesión después del inicio de sesión
+// En supposant que les informations utilisateur sont stockées dans une session après la connexion
 session_start();
 
-// Destruir todas las variables de sesión
+//Détruire toutes les variables de session
 session_destroy();
 
-// Redirigir a la página de inicio de sesión
+// Redirection vers la page de connexion
 header("Location: login.php");
 exit();
 ?>

@@ -41,15 +41,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Obtenez l'ID de l'utilisateur nouvellement enregistré
         $user_id = mysqli_insert_id($conn);
 
-        // Inserción de la dirección en la tabla 'address'
+        // Insérer l'adresse dans la table 'adresse'
         $sql_address = "INSERT INTO `address` (`street_name`, `street_nb`, `city`, `province`, `zip_code`, `country`)
                         VALUES ('$street_name', '$street_nb', '$city', '$province', '$zip_code', '$country')";
 
         if (mysqli_query($conn, $sql_address)) {
-            // Obtener el ID de la dirección recién registrada
+            // Obtenez l'ID de l'adresse nouvellement enregistrée
             $address_id = mysqli_insert_id($conn);
 
-            // Actualizar el ID de la dirección en la tabla 'user'
+            // Mettre à jour l'ID d'adresse dans la table "user"
             $sql_update_user = "UPDATE `user` SET `billing_address_id` = $address_id, `shipping_address_id` = $address_id
                                 WHERE `id` = $user_id";
 
@@ -68,6 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "Access not allowed";
 }
 
-// Cerrar la conexión a la base de datos
+// Fermer la connexion à la base de données
 mysqli_close($conn);
 ?>

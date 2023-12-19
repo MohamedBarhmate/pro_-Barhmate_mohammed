@@ -13,14 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $new_password = $_POST['new_password'];
     $confirm_new_password = $_POST['confirm_new_password'];
 
-    // Validar campos vacíos
+    // Valider les champs vides
     if (empty($current_password) || empty($new_password) || empty($confirm_new_password)) {
         $error_message = "All fields are required.";
         header("Location: change_password.php?error=$error_message");
         exit();
     }
 
-    // Obtener la contraseña actual del usuario desde la base de datos
+    // Obtenez le mot de passe actuel de l'utilisateur à partir de la base de données
     $sql = "SELECT `pwd` FROM `user` WHERE `id` = $user_id";
     $result = mysqli_query($conn, $sql);
     $user = mysqli_fetch_assoc($result);

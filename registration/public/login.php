@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Login Form Iherb</title> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <title>Login Form Iherb</title> 
     <link rel="stylesheet" href="">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
@@ -115,10 +116,8 @@ form .button input:hover{
 form .signup-link a:hover{
   text-decoration: underline;
 }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-    
-  </head>
+</style> 
+</head>
   <body>
     <div class="container">
       <div class="wrapper">
@@ -136,11 +135,11 @@ form .signup-link a:hover{
           <div class="row button">
             <input type="submit" value="Login">
           </div>
-          <div class="signup-link">Not a member? <a href="#">Signup now</a>
+          <div class="signup-link">Not a member? <a href="inscription.php">Signup now</a></br>
           <a href="../../index.php">Home</a>
           </div>
           <?php
-    // Display error messages if they exist
+    // Afficher les messages d'erreur s'ils existent
     if (isset($_GET['error'])) {
         $error = $_GET['error'];
         echo "<p class='error'>$error</p>";
