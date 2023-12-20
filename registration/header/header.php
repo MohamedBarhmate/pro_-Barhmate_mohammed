@@ -16,7 +16,6 @@
         }
 
         header {
-            background-color: #333;
             color: white;
             padding: 10px 20px;
             display: flex;
@@ -67,7 +66,7 @@
         </nav>
         <div id="logo">
             <a href="index.php">
-                <img src="public/images/logo.png" alt="Logo">
+                <img src="public/images/iherb_logo.png" alt="Logo">
             </a>
         </div>
     </header>
