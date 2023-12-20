@@ -100,6 +100,12 @@ $user_id = $_SESSION['user_id'];
         <input type="submit" value="Change Password">
         <a href="../../index.php">Home</a>
         <?php
+        // Vérifier le paramètre de succès
+        if (isset($_GET['success']) && $_GET['success'] == 1) {
+            echo '<p style="color: green;">Mise à jour du mot de passe est réussie!</p>';
+        }
+        ?>
+        <?php
         // Afficher les messages d'erreur s'ils existent
         if (isset($_GET['error'])) {
             $error = $_GET['error'];
