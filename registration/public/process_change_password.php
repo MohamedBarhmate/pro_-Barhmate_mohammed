@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $update_sql = "UPDATE `user` SET `pwd` = '$hashed_password' WHERE `id` = $user_id";
             mysqli_query($conn, $update_sql);
 
-            header("Location: profil.php");
+            header("Location: change_password.php?success=1");
             exit();
         } else {
             $error_message = "New passwords do not match.";
