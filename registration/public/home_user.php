@@ -60,7 +60,7 @@ nav ul li:hover::after{
       <ul>
       <a href="profil.php"><li>update profil</li></a>
       <a href="change_password.php"><li>changer password</li></a>
-      <a href="../admin/add_product.php"><li> produits </li></a>
+      <a href="../../produit.php"><li> produits </li></a>
       <a href="logout.php"><li>Se déconnecter</li></a>
       </ul>
     </nav>
