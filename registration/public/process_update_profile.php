@@ -23,18 +23,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    // Mettre à jour les informations utilisateur dans la base de données
+    // Mettre à jour les informations user dans la base de données
     $sql = "UPDATE `user` 
-            SET `user_name` = '$user_name', `email` = '$email', `fname` = '$fname', `lname` = '$lname' 
-            WHERE `id` = $user_id";
+            SET `user_name` = ?, `email` = ?, `fname` = ?, `lname` = ? 
+            WHERE `id` = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, 'ssssi', $user_name, $email, $fname, $lname, $user_id);
+   
+    if (mysqli_stmt_execute($stmt)) {
+        header("Location: profil.php?success=1");
 
-    if (mysqli_query($conn, $sql)) {
-        header("Location: profil.php");
     } else {
-        $error_message = "Error updating profil: " . mysqli_error($conn);
+        $error_message = "Error updating profile: " . mysqli_error($conn);
         header("Location: profil.php?error=$error_message");
         exit();
     }
+
+    // Close the prepared statement
+    mysqli_stmt_close($stmt);
 } else {
     echo "Access not allowed";
 }
