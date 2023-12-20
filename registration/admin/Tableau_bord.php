@@ -91,7 +91,6 @@ if ($user_role != 1) {
         <li><a href="view_search_orders.php">Order List</a></li>
         <li><a href="../auth/logout.php">Log out</a></li>
     </ul>
-
 </body>
 
 </html>
