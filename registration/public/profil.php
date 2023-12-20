@@ -130,10 +130,7 @@ $user = mysqli_fetch_assoc($result);
         }
         ?>
     </form>
-    <a href="./change_password.php">Change password</a>
-    <br>
     <a href="./logout.php">Log out</a>
-    <br>
     <a href="../../index.php">Home</a>
 </body>
 
