@@ -1,13 +1,13 @@
 <?php
 // Include database configuration
-include('../../config/database.php');
+include('../../config/connexion.php');
 
 // Start session
 session_start();
 
 // Redirect to login page if user is not authenticated
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../auth/login.php");
+    header("Location: ../public/login.php");
     exit();
 }
 
