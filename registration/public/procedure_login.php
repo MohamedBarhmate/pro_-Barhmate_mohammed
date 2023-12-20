@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($user['role_id'] == 1) { // Admin
                 header("Location: ../admin/Tableau_bord.php");
             } else {
-                header("Location: profil.php");
+                header("Location: home_user.php");
             }
             exit();
         } else {
