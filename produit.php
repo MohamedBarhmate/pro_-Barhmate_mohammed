@@ -164,8 +164,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart'])) {
         <?php } ?>
     </div>
 </main>
-
-<?php //include 'includes/footer.php'; ?>
-
 </body>
 </html>
