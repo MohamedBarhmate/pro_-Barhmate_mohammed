@@ -123,6 +123,12 @@ $user = mysqli_fetch_assoc($result);
         <br>
         <input type="submit" value="Save">
         <?php
+        // Vérifier le paramètre de succès
+        if (isset($_GET['success']) && $_GET['success'] == 1) {
+            echo '<p style="color: green;">Mise à jour du profil réussie!</p>';
+        }
+        ?>
+        <?php
         // Afficher les messages d'erreur s'ils existent
         if (isset($_GET['error'])) {
             $error = $_GET['error'];
