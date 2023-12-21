@@ -89,7 +89,7 @@ if ($user_role != 1) {
         <li><a href="add_product.php">Add Product</a></li>
         <li><a href="manage_users.php">User List</a></li>
         <li><a href="view_search_orders.php">Order List</a></li>
-        <li><a href="../auth/logout.php">Log out</a></li>
+        <li><a href="../public/logout.php">Log out</a></li>
     </ul>
 </body>
 
