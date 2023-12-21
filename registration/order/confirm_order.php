@@ -129,7 +129,7 @@ foreach ($cart_products as $product) {
         <?php endforeach; ?>
     </ul>
 
-    <!-- Form to submit the order -->
+    <!-- Formulaire pour soumettre la commande -->
     <form action="process_confirm_order.php" method="post">
         <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
         <input type="hidden" name="total_price" value="<?php echo $total_price; ?>">
