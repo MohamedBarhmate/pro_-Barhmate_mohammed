@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../public/css/cursor.css">
 
     <style>
-        /* Style for the page */
+        /* Style page */
         h2 {
             color: #333;
             text-align: center;
@@ -44,7 +44,7 @@
             border-radius: 4px;
         }
 
-        /* Style for submit button */
+        /* Style button */
         input[type="submit"] {
             background-color: #007BFF;
             color: #fff;
@@ -58,7 +58,7 @@
             background-color: #0056b3;
         }
 
-        /* Style for links */
+        /* Style links */
         a {
             display: block;
             text-align: center;
@@ -79,32 +79,31 @@
 
 </html>
 
-<!-- Form for adding a product -->
 <h2>Add Product</h2>
 <form action="process_add_product.php" method="post" enctype="multipart/form-data">
-    <!-- Input field for product name -->
+  <!-- Champ de saisie du nom du produit -->
     <label for="name">Product Name:</label>
     <input type="text" name="name" required><br>
 
-    <!-- Input field for quantity -->
+    <!-- Champ de saisie de la quantité -->
     <label for="quantity">Quantity:</label>
     <input type="number" name="quantity" required><br>
 
-    <!-- Input field for price -->
+    <!-- Champ de saisie du prix -->
     <label for="price">Price:</label>
     <input type="text" name="price" required><br>
 
-    <!-- Input field for product image (JPG only) -->
+    <!-- Champ de saisie pour l'image du produit (JPG uniquement) -->
     <label for="image">Product Image (JPG only):</label>
     <input type="file" name="image" accept=".jpg" required><br>
 
-    <!-- Textarea for product description -->
+    <!-- Zone de texte pour la description du produit -->
     <label for="description">Description:</label>
     <textarea name="description" required></textarea><br>
 
     <!-- Submit button -->
     <input type="submit" value="Add Product">
 
-    <!-- Link to the Admin Superrr -->
+    <!-- Lien vers l'Admin Superrr -->
     <a href="./Tableau_bord.php">Admin Superrr</a>
 </form>
