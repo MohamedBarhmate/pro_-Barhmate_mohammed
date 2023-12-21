@@ -1,24 +1,24 @@
 <?php
 session_start();
 
-// Check if the user is authenticated
+// Vérifiez si l'utilisateur est authentifié
 if (!isset($_SESSION['user_id'])) {
-    // Redirect to the login page if the user is not authenticated
+    // Redirection vers la page de connexion si l'utilisateur n'est pas authentifié
     header("Location: ../public/login.php");
     exit();
 }
 
-// Get the user's role from the session
+// Récupérer le rôle de l'utilisateur à partir de la session
 $user_role = $_SESSION['user_role'];
 
-// Check if the user has the administrator role
+// Vérifiez si l'utilisateur a le rôle d'administrateur
 if ($user_role != 1) {
-    // Redirect to the homepage if the user is not an administrator
+    // Redirection vers la page d'accueil si l'utilisateur n'est pas administrateur
     header("Location: ../../index.php");
     exit();
 }
 
-// If the user is an administrator, display the admin dashboard
+//Si l'utilisateur est un administrateur, affichez le tableau de bord d'administration
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +31,7 @@ if ($user_role != 1) {
     <link rel="stylesheet" href="">
 
     <style>
-        /* Style for the page */
+        /* Style page */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f4f4;
@@ -83,7 +83,7 @@ if ($user_role != 1) {
 <body>
     <h2>Welcome to the Admin SUPERRR </h2>
 
-    <!-- Navigation menu using an unordered list -->
+    <!-- Menu de navigation utilisant une liste non ordonnée -->
     <ul>
         <li><a href="../../index.php">Home</a></li>
         <li><a href="add_product.php">Add Product</a></li>
