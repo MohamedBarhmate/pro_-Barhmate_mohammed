@@ -25,7 +25,7 @@ if (isset($_GET['user_id'])) {
     $user_id = $_GET['user_id'];
 
     // Connect to the database (adjust the path based on your file structure)
-    require_once('../../config/database.php');
+    require_once('../../config/connexion.php');
 
     // Query to update the user's role to 'admin'
     $update_query = "UPDATE `user` SET `role_id` = 1 WHERE `id` = $user_id";
@@ -34,7 +34,7 @@ if (isset($_GET['user_id'])) {
     // Check if the update was successful
     if ($result) {
         // Redirect to the dashboard after a successful update
-        header("Location: dashboard.php");
+        header("Location: Tableau_bord.php");
     } else {
         // Display an error message if there's an issue with the database update
         echo "Error updating user role: " . mysqli_error($conn);
