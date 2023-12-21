@@ -1,50 +1,50 @@
 <?php
-// Include the database configuration file
+// Inclure le fichier de configuration de la base de données
 require_once('../../config/connexion.php');
 
-// Check if the request method is POST
+// Vérifiez si la méthode de requête est POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get data from the POST request
+    // Récupérer les données de la requête POST
     $name = $_POST['name'];
     $quantity = $_POST['quantity'];
     $price = $_POST['price'];
     $description = $_POST['description'];
 
-    // Handle the image upload
+    // Gérer le téléchargement de l'image
     $targetDir = "../../public/img/";
     $targetFile = $targetDir . basename($_FILES["image"]["name"]);
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
-    // Verify if the file is a JPG image
+    // Vérifiez si le fichier est une image JPG
     if ($imageFileType != "jpg") {
         echo "Only JPG files are allowed.";
         exit();
     }
 
-    // Move the file to the images folder
+    // Déplacez le fichier dans le dossier images
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
-        // Insert the new product into the database
+        // Insérez le nouveau produit dans la base de données
         $imgPath = "public/img/" . basename($_FILES["image"]["name"]);
         $insertQuery = "INSERT INTO `product` (`name`, `quantity`, `price`, `img_url`, `description`, `img_path`) VALUES ('$name', $quantity, $price, '$imgPath', '$description', '$targetFile')";
         $result = mysqli_query($conn, $insertQuery);
 
-        // Check if the insertion was successful
+        // Vérifiez si l'insertion a réussi
         if ($result) {
-            // Redirect to the dashboard after successful addition
+            // Redirection vers le tableau de bord après un ajout réussi
             header("Location: Tableau_bord.php");
         } else {
-            // Display an error message if there's an issue with the database insertion
+            // Afficher un message d'erreur en cas de problème d'insertion dans la base de données
             echo "Error adding the product: " . mysqli_error($conn);
         }
     } else {
-        // Display an error message if there's an issue with the image upload
+        // Afficher un message d'erreur en cas de problème avec le téléchargement de l'image
         echo "Error uploading the image.";
     }
 } else {
-    // Display a message if access is not allowed
+    // Afficher un message si l'accès n'est pas autorisé
     echo "Access not allowed.";
 }
 
-// Close the database connection
+// Fermer la connexion à la base de données
 mysqli_close($conn);
 ?>
