@@ -41,9 +41,9 @@ body{
 #check{
   display: none;
 }
-.container .form{
+/* .container .form{
   padding: 2rem;
-}
+} */
 .form header{
   font-size: 2rem;
   font-weight: 500;
@@ -60,17 +60,6 @@ body{
    border-radius: 6px;
    outline: none;
  }
- .form input:focus{
-   box-shadow: 0 1px 0 rgba(0,0,0,0.2);
- }
-.form a{
-  font-size: 16px;
-  color: #009579;
-  text-decoration: none;
-}
-.form a:hover{
-  text-decoration: underline;
-}
 .form input.button{
   color: #fff;
   background: #009579;
@@ -123,8 +112,8 @@ body{
         ?>
     </form>
       <div class="signup">
-        <span class="signup">Already have an account?
-         <label for="check">Login</label>
+        <span class="signup">Vous avez déjà un compte?
+         <label for="check"><a href="login.php">login</a></label>
         </span>
       </div>
     </div>
