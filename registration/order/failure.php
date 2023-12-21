@@ -16,7 +16,7 @@
 
         header {
             background-color: #ff0000;
-            /* Red to indicate an error */
+            /*Rouge pour indiquer une erreur */
             color: #fff;
             padding: 10px;
             text-align: center;
@@ -38,7 +38,7 @@
         a {
             display: inline-block;
             background-color: #ff0000;
-            /* Red to match the header */
+            /* Rouge assorti à l'en-tête */
             color: #fff;
             padding: 10px 15px;
             text-decoration: none;
@@ -58,8 +58,8 @@
     </header>
 
     <main>
-        <p>Oops! Something went wrong with your order. Please try again later.</p>
-        <p>If the issue persists, contact our customer support for assistance.</p>
+        <p>Oops! Quelque chose s'est mal passé avec votre commande. Veuillez réessayer plus tard.</p>
+        <p>Si le problème persiste, contactez notre service client pour obtenir de l'aide.</p>
         <a href="../../index.php">Return to Home</a>
     </main>
 </body>
