@@ -115,7 +115,7 @@
     </form>
 
     <!-- Dashboard Link -->
-    <a class="dashboard-link" href="./dashboard.php">Dashboard</a>
+    <a class="dashboard-link" href="./Tableau_bord.php">Tableau bord</a>
 </body>
 
 </html>
@@ -127,7 +127,7 @@ session_start();
 // Check if the user is authenticated
 if (!isset($_SESSION['user_id'])) {
     // Redirect to the login page if the user is not authenticated
-    header("Location: ../auth/login.php");
+    header("Location: ../public/login.php");
     exit();
 }
 
@@ -142,7 +142,7 @@ if ($user_role != 1) {
 }
 
 // Require the database configuration file
-require_once('../../config/database.php');
+require_once('../../config/connexion.php');
 
 // Handle order search
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
