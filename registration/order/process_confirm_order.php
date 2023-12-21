@@ -1,10 +1,10 @@
 <?php
-include('../../config/database.php');
+include('../../config/connexion.php');
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
     // Rediriger vers la page de connexion ou gérer les accès non autorisés
-    header("Location: ../auth/login.php");
+    header("Location: ../public/login.php");
     exit();
 }
 
