@@ -1,24 +1,24 @@
 <?php
 session_start();
 
-// Check if the user is authenticated
+// Vérifiez si l'utilisateur est authentifié
 if (!isset($_SESSION['user_id'])) {
-    // Redirect to the login page if the user is not authenticated
-    header("Location: ../auth/login.php");
+    // Redirection vers la page de connexion si l'utilisateur n'est pas authentifié
+    header("Location: ../produit/login.php");
     exit();
 }
 
-// Get the user's role from the session
+// Récupérer le rôle de l'utilisateur à partir de la session
 $user_role = $_SESSION['user_role'];
 
-// Check if the user has the administrator role
+// Vérifiez si l'utilisateur a le rôle d'administrateur
 if ($user_role != 1) {
-    // Redirect to the homepage if the user is not an administrator
+    // Redirection vers la page d'accueil si l'utilisateur n'est pas administrateur
     header("Location: ../../index.php");
     exit();
 }
 
-// Simply display the list of users for now
+// Affichez simplement la liste des utilisateurs pour l'instant
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -88,18 +88,18 @@ if ($user_role != 1) {
 
 <body>
     <h2>User List</h2>
-    <a href="./dashboard.php">Dashboard</a>
+    <a href="./Tableau_bord.php">Tableau_bord</a>
 
     <?php
-    // Connect to the database (adjust the path based on your file structure)
-    require_once('../../config/database.php');
+    // Connectez-vous à la base de données (ajustez le chemin en fonction de la structure de vos fichiers)
+    require_once('../../config/connexion.php');
 
-    // Query to get the list of users
+    // Requête pour obtenir la liste des utilisateurs
     $sql = "SELECT `id`, `user_name`, `email` FROM `user`";
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        // Display the list of users
+        // Afficher la liste des utilisateurs
         echo "<table border='1'>
                 <tr>
                     <th>User ID</th>
@@ -119,13 +119,13 @@ if ($user_role != 1) {
 
         echo "</table>";
 
-        // Free the result set
+        // Libérer le jeu de résultats
         mysqli_free_result($result);
     } else {
         echo "Error: " . mysqli_error($conn);
     }
 
-    // Close the database connection
+    // Fermer la connexion à la base de données
     mysqli_close($conn);
     ?>
 </body>
