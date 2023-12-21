@@ -1,44 +1,44 @@
 <?php
 session_start();
 
-// Check if the user is authenticated
+// Vérifiez si l'utilisateur est authentifié
 if (!isset($_SESSION['user_id'])) {
-    // Redirect to the login page if the user is not authenticated
+    // Redirection vers la page de connexion si l'utilisateur n'est pas authentifié
     header("Location: ../public/login.php");
     exit();
 }
 
-// Get the user's role from the session
+// Récupérer le rôle de l'utilisateur à partir de la session
 $user_role = $_SESSION['user_role'];
 
-// Check if the user has the administrator role
+// Vérifiez si l'utilisateur a le rôle d'administrateur
 if ($user_role != 1) {
-    // Redirect to the homepage if the user is not an administrator
+    // Redirection vers la page d'accueil si l'utilisateur n'est pas administrateur
     header("Location: ../../index.php");
     exit();
 }
 
-// Check if the user ID to be deleted is provided
+// Vérifiez si l'ID utilisateur à supprimer est fourni
 if (isset($_GET['user_id'])) {
     $user_id = $_GET['user_id'];
 
-    // Connect to the database (adjust the path based on your file structure)
+    // Connectez-vous à la base de données (ajustez le chemin en fonction de la structure de vos fichiers)
     require_once('../../config/connexion.php');
 
-    // Query to delete the user
+    // Requête pour supprimer l'utilisateur
     $delete_query = "DELETE FROM `user` WHERE `id` = $user_id";
     
-    // Execute the delete query
+    // Exécuter la requête de suppression
     $result = mysqli_query($conn, $delete_query);
 
-    // Check if the deletion was successful
+    // Vérifiez si la suppression a réussi
     if ($result) {
         header("Location: Tableau_bord.php");
     } else {
         echo "Error deleting user: " . mysqli_error($conn);
     }
 
-    // Close the database connection
+    // Fermer la connexion à la base de données
     mysqli_close($conn);
 } else {
     echo "User ID not provided.";
