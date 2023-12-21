@@ -26,7 +26,7 @@ if ($user_role != 1) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Admin Dashboard</title>
+    <title>Tableau de bord</title>
     <!-- Include a CSS file (cursor.css) -->
     <link rel="stylesheet" href="">
 
@@ -50,19 +50,19 @@ if ($user_role != 1) {
             margin-bottom: 20px;
         }
 
-        /* Style for the unordered list */
+        /* Style la liste non ordonnée */
         ul {
             list-style-type: none;
             padding: 0;
             text-align: center;
         }
 
-        /* Style for list items */
+        /* Style  list items */
         li {
             margin: 10px 0;
         }
 
-        /* Style for links */
+        /* Style  links */
         a {
             display: block;
             padding: 10px;
