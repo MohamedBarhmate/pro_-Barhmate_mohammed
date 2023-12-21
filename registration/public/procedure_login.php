@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_role'] = $user['role_id'];
 
             // Redirection basée sur le rôle de l'utilisateur
-            if ($user['role_id'] == 1) { // Admin
+            if ($user['role_id'] == 1) { // super Admin : user_name : tata ET MOT DE PASSE : 123
                 header("Location: ../admin/Tableau_bord.php");
             } else {
                 header("Location: home_user.php");
