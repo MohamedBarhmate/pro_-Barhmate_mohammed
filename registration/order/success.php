@@ -51,12 +51,12 @@
 
 <body>
     <header>
-        <h1>Order Success</h1>
+        <h1>Succès de la commande</h1>
     </header>
 
     <main>
-        <p>Your order was successful! Thank you for shopping with us.</p>
-        <p>You will receive an email confirmation shortly.</p>
+        <p>Votre commande a réussi ! Merci d'avoir magasiné avec nous.</p>
+        <p>Vous allez bientôt recevoir un mail de confirmation.</p>
         <a href="../../index.php">Return to Home</a>
     </main>
 
