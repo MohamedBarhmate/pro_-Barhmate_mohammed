@@ -7,7 +7,7 @@
     <title>Search Orders</title>
     <link rel="stylesheet" href="../../public/css/cursor.css">
     <style>
-        /* Styles for the page layout and search form */
+        /* Styles  page layout and search form */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -17,7 +17,7 @@
 
         h1,
         h2 {
-            /* Styles for heading sections */
+            /* Style  sections de titre */
             background-color: #007BFF;
             color: #fff;
             padding: 10px;
@@ -25,7 +25,7 @@
         }
 
         form {
-            /* Styles for the search form */
+            /* Styles  search form */
             width: 50%;
             margin: 20px auto;
             padding: 15px;
@@ -35,13 +35,13 @@
         }
 
         label {
-            /* Styles for form labels */
+            /* Styles  labels */
             display: block;
             margin-bottom: 8px;
         }
 
         input[type="text"] {
-            /* Styles for text input fields */
+            /* Styles  text input fields */
             width: 100%;
             padding: 8px;
             margin-bottom: 15px;
@@ -49,7 +49,7 @@
         }
 
         button {
-            /* Styles for the search button */
+            /* Styles search button */
             background-color: #007BFF;
             color: #fff;
             padding: 10px 15px;
@@ -59,12 +59,12 @@
         }
 
         button:hover {
-            /* Hover effect for the search button */
+            /* Hover effect pour le bouton de recherche */
             background-color: #0056b3;
         }
 
         .dashboard-link {
-            /* Styles for the Dashboard link */
+            /* Styles tableau bord link */
             display: block;
             text-align: center;
             margin-top: 10px;
@@ -76,12 +76,12 @@
         }
 
         .dashboard-link:hover {
-            /* Hover effect for the Dashboard link */
+            /* Hover effect tableau bord link */
             background-color: #218838;
         }
 
         hr {
-            /* Styles for the horizontal rule */
+            /* Styles horizontal rule */
             margin: 20px 0;
             border: 0;
             border-top: 1px solid #ddd;
@@ -104,8 +104,8 @@
 </head>
 
 <body>
-    <h1>Search Orders</h1>
-    <span style="color: red; font-weight: bold;">Note: Write 'ord' and click in 'Search' to see all the orders</span>
+    <h1>Ordres de Recherche</h1>
+    <span style="color: red; font-weight: bold;">Remarque : Écrivez « ord » et cliquez sur « Rechercher » pour voir toutes les commandes.</span>
 
     <!-- Search Form -->
     <form action="view_search_orders.php" method="post">
@@ -114,7 +114,7 @@
         <button type="submit">Search</button>
     </form>
 
-    <!-- Dashboard Link -->
+    <!-- Tableau bord Link -->
     <a class="dashboard-link" href="./Tableau_bord.php">Tableau bord</a>
 </body>
 
@@ -124,37 +124,37 @@
 // Start a session
 session_start();
 
-// Check if the user is authenticated
+// Vérifiez si l'utilisateur est authentifié
 if (!isset($_SESSION['user_id'])) {
-    // Redirect to the login page if the user is not authenticated
+    // Redirection vers la page de connexion si l'utilisateur n'est pas authentifié
     header("Location: ../public/login.php");
     exit();
 }
 
-// Get the user role from the session
+// Récupérer le rôle utilisateur de la session
 $user_role = $_SESSION['user_role'];
 
-// Check if the user has the administrator role
+// Vérifiez si l'utilisateur a le rôle d'administrateur
 if ($user_role != 1) {
-    // Redirect to the home page if the user is not an administrator
+    // Redirection vers la page d'accueil si l'utilisateur n'est pas administrateur
     header("Location: ../../index.php");
     exit();
 }
 
-// Require the database configuration file
+// Exiger le fichier de configuration de la base de données
 require_once('../../config/connexion.php');
 
-// Handle order search
+// Gérer la recherche de commandes
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get and sanitize the search reference
+    // Récupérer et désinfecter la référence de recherche
     $search_ref = mysqli_real_escape_string($conn, $_POST['search_ref']);
 
-    // Query to search for orders containing the provided reference
+    // Requête pour rechercher les commandes contenant la référence fournie
     $search_query = "SELECT * FROM `user_order` WHERE `ref` LIKE '%$search_ref%'";
     $search_result = mysqli_query($conn, $search_query);
 
     if ($search_result) {
-        // Display search results
+        // Afficher les résultats de la recherche
         echo "<h2>Search Results</h2>";
         while ($order = mysqli_fetch_assoc($search_result)) {
             echo "Order ID: " . $order['id'] . "<br>";
@@ -169,6 +169,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Close the database connection
+// Fermer la connexion à la base de données
 mysqli_close($conn);
 ?>
