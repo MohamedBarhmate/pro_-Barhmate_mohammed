@@ -1,27 +1,27 @@
 <?php
 session_start();
 
-// Check if the user is logged in
+// Vérifiez si l'utilisateur est connecté
 if (!isset($_SESSION['user_id'])) {
-    // User is not logged in, redirect to the login page
+    // L'utilisateur n'est pas connecté, redirigez vers la page de connexion
     header("Location: ../public/login.php");
     exit();
 }
 
-// Initialize the cart if it doesn't exist
+// Initialisez le panier s'il n'existe pas
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
 
-// Handling addition to the cart
+// Gestion de l'ajout au panier
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['add_to_cart'])) {
-        // Get product details and add to the cart
+        // Obtenez les détails du produit et ajoutez-le au panier
         $productId = $_POST['product_id'];
         $productName = $_POST['product_name'];
         $productPrice = $_POST['product_price'];
 
-        // Check if the product is already in the cart
+        // Vérifiez si le produit est déjà dans le panier
         $productInCart = false;
         foreach ($_SESSION['cart'] as &$cartItem) {
             if ($cartItem['id'] === $productId) {
@@ -30,9 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 break;
             }
         }
-        unset($cartItem); // Release the explicit reference
+        unset($cartItem); // Libérer la référence explicite
 
-        // If the product is not in the cart, add it
+        // Si le produit n'est pas dans le panier, ajoutez-le
         if (!$productInCart) {
             $_SESSION['cart'][] = [
                 'id' => $productId,
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ];
         }
     } elseif (isset($_POST['empty_cart'])) {
-        // Empty the cart when the button is clicked
+        // Videz le panier lorsque vous cliquez sur le bouton
         $_SESSION['cart'] = [];
     } elseif (isset($_POST['confirm_order'])) {
         // Redirect to the order confirmation page
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Calculate total price of products in the cart
+// Calculer le prix total des produits dans le panier
 $totalPrice = 0;
 foreach ($_SESSION['cart'] as $item) {
     $totalPrice += $item['price'] * $item['quantity'];
@@ -134,11 +134,11 @@ foreach ($_SESSION['cart'] as $item) {
 <body>
 
     <main>
-        <h1>Your Shopping Cart</h1>
+        <h1>Votre Panier</h1>
 
         <div class="cart-container">
             <?php
-            // Display items in the cart
+            // Afficher les articles dans le panier
             foreach ($_SESSION['cart'] as $item) {
                 echo '<div class="cart-item">';
                 echo '<p>' . $item['name'] . '</p>';
@@ -148,10 +148,10 @@ foreach ($_SESSION['cart'] as $item) {
             }
             ?>
 
-            <!-- Display total price of products -->
+            <!-- Afficher le prix total des produits -->
             <p>Total Price: $<?php echo number_format($totalPrice, 2); ?></p>
 
-            <!-- Form to confirm the order -->
+            <!-- Formulaire de confirmation de commande -->
             <form action="confirm_order.php" method="post">
                 <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                 <?php foreach ($_SESSION['cart'] as $item) : ?>
@@ -163,9 +163,9 @@ foreach ($_SESSION['cart'] as $item) {
             </form>
             <br>
 
-            <!-- Form to empty the cart -->
+            <!-- Formulaire pour vider le panier -->
             <form action="" method="post">
-                <button type="submit" name="empty_cart">Empty Cart</button>
+                <button type="submit" name="empty_cart">Panier vide</button>
             </form>
             <a href="../../index.php">Home</a>
         </div>
