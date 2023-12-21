@@ -79,7 +79,7 @@
 
 </html>
 
-<h2>Add Product</h2>
+<h2>Ajouter un produit</h2>
 <form action="process_add_product.php" method="post" enctype="multipart/form-data">
   <!-- Champ de saisie du nom du produit -->
     <label for="name">Product Name:</label>
@@ -105,5 +105,5 @@
     <input type="submit" value="Add Product">
 
     <!-- Lien vers l'Admin Superrr -->
-    <a href="./Tableau_bord.php">Admin Superrr</a>
+    <a href="./Tableau_bord.php">Tableau bord</a>
 </form>
