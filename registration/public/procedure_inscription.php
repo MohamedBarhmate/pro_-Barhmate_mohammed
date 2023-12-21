@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 WHERE `id` = $user_id";
 
             if (mysqli_query($conn, $sql_update_user)) {
-                header("Location: profil.php");
+                header("Location: login.php");
             } else {
                 echo "Error updating user with address ID: " . mysqli_error($conn);
             }
